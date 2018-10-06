@@ -5,7 +5,7 @@ const _ = require('lodash');
 module.exports.enableTelegramControllers = function (services, config) {
     const controllers = config.controllers;
     const checkUser = config.checkUser(services);
-    const checkRole = config.checkRole(services);
+    const checkAccess = config.checkAccess(services);
 
     const bot = services.bot;
     const telegramConfig = services.telegramConfig;
@@ -126,7 +126,7 @@ module.exports.enableTelegramControllers = function (services, config) {
 
                         checkUser(msg.from)
                             .then(function (user) {
-                                if (action.role && !checkRole(user, action.role)) {
+                                if (!checkAccess(user, action)) {
                                     return;
                                 }
 
@@ -179,7 +179,7 @@ module.exports.enableTelegramControllers = function (services, config) {
                     return;
                 }
 
-                if (action.role && !checkRole(user, action.role)) {
+                if (!checkAccess(user, action)) {
                     return;
                 }
 
@@ -211,7 +211,7 @@ module.exports.enableTelegramControllers = function (services, config) {
                     return;
                 }
 
-                if (action.role && !checkRole(user, action.role)) {
+                if (!checkAccess(user, action)) {
                     return;
                 }
 
@@ -229,7 +229,7 @@ module.exports.enableTelegramControllers = function (services, config) {
                 const contact = msg.contact;
 
                 const promises = _.map(serviceQueries.contact, function (action) {
-                    if (action.role && !checkRole(user, action.role)) {
+                    if (!checkAccess(user, action)) {
 
                         return new Promise(function (resolve) {
                             resolve()
@@ -257,7 +257,7 @@ module.exports.enableTelegramControllers = function (services, config) {
                 const text = msg.text;
 
                 const promises = _.map(serviceQueries.text, function (action) {
-                    if (action.role && !checkRole(user, action.role)) {
+                    if (!checkAccess(user, action)) {
                         return new Promise(function (resolve) {
                             resolve()
                         });
@@ -284,7 +284,7 @@ module.exports.enableTelegramControllers = function (services, config) {
                 const photo = msg.photo;
 
                 const promises = _.map(serviceQueries.photo, function (action) {
-                    if (action.role && !checkRole(user, action.role)) {
+                    if (!checkAccess(user, action)) {
                         return new Promise(function (resolve) {
                             resolve();
                         });
