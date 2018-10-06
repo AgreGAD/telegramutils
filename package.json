@@ -1,0 +1,27 @@
+{
+  "name": "telegramutils",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgreGAD/nodejs-form.git"
+  },
+  "author": "Marat Fakhertdinov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com//AgreGAD/nodejs-form/issues"
+  },
+  "homepage": "https://github.com//AgreGAD/nodejs-form#readme",
+  "dependencies": {
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0",
+    "sinon": "^3.2.1"
+  }
+}
