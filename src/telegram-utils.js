@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 module.exports.enableTelegramControllers = function (services, config) {
     const controllers = config.controllers;
-    const checkUser = config.checkUser;
+    const checkUser = config.checkUser(services);
 
     const bot = services.bot;
     const telegramConfig = services.telegramConfig;
